@@ -6,14 +6,14 @@ import tkinter
 def checkBluetooth():
      while True:
           os.system("rm -R rssilog.txt")
-          os.system("""rs=`system_profiler SPBluetoothDataType | grep -E "Connected.*Yes" `\necho $rs>> /Users/Edon/Desktop/rssilog.txt;""")
+          os.system("""rs=`system_profiler SPBluetoothDataType | grep -E "Connected.*Yes" `\necho $rs>> /Users/User/Desktop/rssilog.txt;""")
           file = open("rssilog.txt","r")
           connected = str(file.read(20)[17:])
           if len(connected) == 0:
                print("please connect a device")
           else:
                os.system("rm -R rssilog.txt")
-               os.system("rs=`system_profiler SPBluetoothDataType | grep Bluetooth.Power`\necho $rs>> /Users/Edon/Desktop/rssilog.txt;")
+               os.system("rs=`system_profiler SPBluetoothDataType | grep Bluetooth.Power`\necho $rs>> /Users/User/Desktop/rssilog.txt;")
                file = open("rssilog.txt","r")
                bluetooth = str(file.read(20)[17:])
                
@@ -50,7 +50,7 @@ def checkRange(*args):
                os.system("rm -R rssilog.txt")
                root.update()
                if status == False:
-                    os.system("rs=`system_profiler SPBluetoothDataType | grep RSSI`\necho $rs>> /Users/Edon/Desktop/rssilog.txt;")
+                    os.system("rs=`system_profiler SPBluetoothDataType | grep RSSI`\necho $rs>> /Users/User/Desktop/rssilog.txt;")
 
                     file = open("rssilog.txt","r")
                     rssi = int(file.read(9)[6:])
@@ -67,7 +67,7 @@ def checkRange(*args):
 
 
                elif status == True:
-                    os.system("rs=`system_profiler SPBluetoothDataType | grep RSSI`\necho $rs>> /Users/Edon/Desktop/rssilog.txt;")
+                    os.system("rs=`system_profiler SPBluetoothDataType | grep RSSI`\necho $rs>> /Users/User/Desktop/rssilog.txt;")
 
                     file = open("rssilog.txt","r")
                     rssi = int(file.read(9)[6:])
@@ -119,20 +119,3 @@ for child in mainframe.winfo_children(): child.grid_configure(padx=5, pady=5)
 password_entry.focus()
 checkBluetooth()
 root.mainloop()
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
