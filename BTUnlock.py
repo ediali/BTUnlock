@@ -8,7 +8,7 @@ def checkBluetooth():
           os.system("rm -R rssilog.txt")
           os.system("""rs=`system_profiler SPBluetoothDataType | grep -E "Connected.*Yes" `\necho $rs>> /Users/User/Desktop/rssilog.txt;""")
           file = open("rssilog.txt","r")
-          connected = str(file.read(20)[17:])
+          connected = str(file.read(20)[11:])
           if len(connected) == 0:
                print("please connect a device")
           else:
@@ -82,7 +82,10 @@ def checkRange(*args):
 
      except ValueError:
           print("Please insert values or turn BT on")
- 
+
+def stop():
+     quit()
+
 
 root = Tk()
 root.title("Bluetooth Unlock")
@@ -107,6 +110,7 @@ ttk.Label(mainframe, textvariable = BT).grid(column = 4, row = 1, sticky = W)
 ttk.Label(mainframe, text = "Bluetooth status:").grid(column = 3, row = 1, sticky = W)
 
 ttk.Button(mainframe, text = "Activate BT Unlock", command = checkRange).grid(column = 3, row = 2, sticky = W)
+ttk.Button(mainframe, text = "Stop BT Unlock", command = stop).grid(column = 4, row = 2, sticky = W)
 
 ttk.Label(mainframe, text="Password").grid(column=1, row=1, sticky=E)
 ttk.Label(mainframe, text="Distance").grid(column=1, row=2, sticky=E)
